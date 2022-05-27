@@ -1,10 +1,16 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <netdb.h>
+#include <sys/wait.h>
+#include <arpa/inet.h>
 #include <unistd.h>
 #include <time.h>
+
+#define PORT 13
 
 int main(int argc,char**argv){
 
@@ -20,8 +26,8 @@ int main(int argc,char**argv){
  char response[30];
  struct sockaddr_in serverAddress;
  serverAddress.sin_family = AF_INET;
- serverAddress.sin_addr.s_addr = INADDR_ANY;
- serverAddress.sin_port = htons(port);
+ serverAddress.sin_addr.s_addr = inet_addr("192.168.56.105");
+ serverAddress.sin_port = htons(13);
 
  connect(sockfd, (struct sockaddr*)&serverAddress, sizeof(serverAddress));
  printf("[+]Connected to the server\n");
