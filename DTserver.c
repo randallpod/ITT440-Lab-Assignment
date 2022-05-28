@@ -33,7 +33,7 @@ int main(int argc, char *argv[] )
     if(bind(socTime,(struct sockaddr *)&server, sizeof(server))<0)
       {
 
-       puts("\nbind failed");
+       puts("\nBind failed");
        return 1;
       }
      puts("\nSocket is  binded! ");
