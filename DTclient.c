@@ -18,11 +18,11 @@ struct sockaddr_in server;
 char response[30];
 
 
-//creating socket
+//create socket
 socTime=socket(AF_INET, SOCK_STREAM, 0);
 if(socTime==-1)
 {
-printf("Failed to create socket!");
+printf("Failed to create!");
 }
 
 
@@ -33,16 +33,16 @@ server.sin_addr.s_addr=inet_addr("192.168.56.104");//Server IP address
 //connect to remote server
 if(connect(socTime,(struct sockaddr *)&server, sizeof(server))<0)
 {
-puts("connect error");
+puts("CONNECTION ERROR");
 return 1;
 }
-puts("Connected successfully! \n");
+puts("CONNECTED SUCCESSFULLY! \n");
 
- //Receiving time from server
+ //receive time from server
   recv(socTime, response, 29, 0);
   printf("Time received from server= %s", response);
 
-  //Closing socket
+  //close socket
   close(socTime);
 
 return 0;
